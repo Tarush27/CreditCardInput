@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="SubmitPaymentText" parent="Widget.MaterialComponents.TextView">
+        <item name="android:text">SUBMIT PAYMENT</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:fontFamily">sans-serif-medium</item>
+    </style>
+
+    <style name="CreditCardTextInputLayout" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+        <item name="hintTextColor">@color/bottle_green</item>
+    </style>
+
+</resources>

@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">Credit Card Input</string>
+    <string name="card_number">Card number</string>
+    <string name="credit_card_expiry_date">MM/YY</string>
+    <string name="credit_card_security_code">Security code</string>
+    <string name="first_name">First name</string>
+    <string name="last_name">Last name</string>
+    <string name="invalid_card_number">Invalid Card Number</string>
+    <string name="valid_card_number">Valid Card Number</string>
+    <string name="enter_card_number">Please enter your card number</string>
+    <string name="correct_month_year">Valid Month Year</string>
+    <string name="incorrect_month_year">Invalid Month Year</string>
+</resources>
