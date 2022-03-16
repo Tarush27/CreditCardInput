@@ -24,6 +24,10 @@ class CreditCardViewModel : ViewModel() {
         return expMonth > currentMonth && expYear > currentYear
     }
 
+    fun validateCreditCardCvv(securityNumber: String): Boolean {
+        return securityNumber.length == 3
+    }
+
     private fun getCurrentMonthYear(currentMonthSpec: Calendar): Pair<Int, Int> {
         val currentMonth = currentMonthSpec[Calendar.MONTH] + 1
         val currentYear = currentMonthSpec[Calendar.YEAR] % 100
