@@ -83,6 +83,7 @@
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/credit_card_security_code_text_view"
                 android:layout_width="match_parent"
+                android:maxLength="3"
                 android:layout_height="wrap_content"
                 android:inputType="number" />
 
