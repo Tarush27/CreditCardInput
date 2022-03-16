@@ -36,10 +36,19 @@ class CreditCardMainActivity : AppCompatActivity() {
         if (!creditCardViewModel.validateExpiryMonthAndYear(monthAndYear)) {
             creditCardDetailsActivityMainBinding.creditCardExpiryTextInputLayout.error =
                 getString(R.string.incorrect_month_year)
-        }
-        else{
+        } else {
             creditCardDetailsActivityMainBinding.creditCardExpiryTextInputLayout.helperText =
                 getString(R.string.correct_month_year)
+        }
+
+        val creditCardCvv: String =
+            creditCardDetailsActivityMainBinding.creditCardSecurityCodeTextView.text.toString()
+        if (!creditCardViewModel.validateCreditCardCvv(creditCardCvv)) {
+            creditCardDetailsActivityMainBinding.creditCardSecurityCodeTextInputLayout.error =
+                getString(R.string.invalid_cvv)
+        } else {
+            creditCardDetailsActivityMainBinding.creditCardSecurityCodeTextInputLayout.helperText =
+                getString(R.string.valid_cvv)
         }
 
 
