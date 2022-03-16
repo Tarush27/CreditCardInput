@@ -10,4 +10,6 @@
     <string name="enter_card_number">Please enter your card number</string>
     <string name="correct_month_year">Valid Month Year</string>
     <string name="incorrect_month_year">Invalid Month Year</string>
+    <string name="invalid_cvv">Invalid CVV</string>
+    <string name="valid_cvv">Valid CVV</string>
 </resources>
