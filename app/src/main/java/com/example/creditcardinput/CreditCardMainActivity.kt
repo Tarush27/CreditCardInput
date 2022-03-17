@@ -51,7 +51,25 @@ class CreditCardMainActivity : AppCompatActivity() {
                 getString(R.string.valid_cvv)
         }
 
+        val firstName = creditCardViewModel.validateFirstName(
+            creditCardDetailsActivityMainBinding.creditCardFirstNameTextView.text.toString()
+        )
+        if (firstName.isEmpty()) {
+            creditCardDetailsActivityMainBinding.creditCardFirsNameTextInputLayout.error =
+                getString(R.string.enter_first_name)
+        } else {
+            creditCardDetailsActivityMainBinding.creditCardFirsNameTextInputLayout.error = null
+        }
 
+        val lastName = creditCardViewModel.validateLastName(
+            creditCardDetailsActivityMainBinding.creditCardLastNameTextView.text.toString()
+        )
+        if (lastName.isEmpty()) {
+            creditCardDetailsActivityMainBinding.creditCardLastNameTextInputLayout.error =
+                getString(R.string.enter_last_name)
+        } else {
+            creditCardDetailsActivityMainBinding.creditCardLastNameTextInputLayout.error = null
+        }
     }
 
 }
