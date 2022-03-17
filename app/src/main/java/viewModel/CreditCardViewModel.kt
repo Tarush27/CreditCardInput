@@ -34,5 +34,11 @@ class CreditCardViewModel : ViewModel() {
         return Pair(currentMonth, currentYear)
     }
 
+    fun validateFirstName(firstName: String): String{
+        return firstName.trim()
+    }
+    fun validateLastName(lastName: String): String{
+        return lastName.trim()
+    }
 
 }
