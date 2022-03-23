@@ -1,6 +1,10 @@
 package viewModel
 
+import android.content.Context
+import android.content.DialogInterface
 import androidx.lifecycle.ViewModel
+import com.example.creditcardinput.R
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import java.util.*
 
 class CreditCardViewModel : ViewModel() {
@@ -34,11 +38,11 @@ class CreditCardViewModel : ViewModel() {
         return Pair(currentMonth, currentYear)
     }
 
-    fun validateFirstName(firstName: String): String{
+    fun validateFirstName(firstName: String): String {
         return firstName.trim()
     }
-    fun validateLastName(lastName: String): String{
+
+    fun validateLastName(lastName: String): String {
         return lastName.trim()
     }
-
 }
