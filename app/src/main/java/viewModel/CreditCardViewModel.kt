@@ -1,10 +1,6 @@
 package viewModel
 
-import android.content.Context
-import android.content.DialogInterface
 import androidx.lifecycle.ViewModel
-import com.example.creditcardinput.R
-import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import java.util.*
 
 class CreditCardViewModel : ViewModel() {
