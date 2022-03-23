@@ -6,5 +6,4 @@ data class CreditCardDetails(
     private val cvv: String,
     private val firstName: String,
     private val lastName: String
-
 )
