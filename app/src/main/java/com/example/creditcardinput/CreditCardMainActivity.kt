@@ -22,10 +22,6 @@ class CreditCardMainActivity : AppCompatActivity() {
         }
     }
 
-    private fun hideAlertDialogBox() {
-        val alertDialog = MaterialAlertDialogBuilder(this)
-        alertDialog.setOnDismissListener { p0 -> p0?.dismiss() }
-    }
 
     private fun validateCreditCard(view: View) {
         creditCardNumber()
@@ -36,7 +32,7 @@ class CreditCardMainActivity : AppCompatActivity() {
         firstName()
 
         lastName()
-
+        showAlertDialogBox()
 
     }
 
