@@ -10,7 +10,7 @@ import viewModel.CreditCardViewModel
 
 class CreditCardMainActivity : AppCompatActivity() {
     private lateinit var creditCardDetailsActivityMainBinding: CreditCardDetailsActivityMainBinding
-    val creditCardViewModel: CreditCardViewModel by viewModels()
+    private val creditCardViewModel: CreditCardViewModel by viewModels()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         creditCardDetailsActivityMainBinding =
@@ -24,23 +24,52 @@ class CreditCardMainActivity : AppCompatActivity() {
 
 
     private fun validateCreditCard(view: View) {
-        creditCardNumber()
-        expirationDate()
 
-        creditCardCvv()
+        val creditCardNumber =
+            creditCardDetailsActivityMainBinding.creditCardNumberTextView.text.toString()
+        val isCardValid = creditCardViewModel.validateCardNumber(
+            creditCardNumber
+        )
+        creditCardNumber(isCardValid)
 
-        firstName()
+        val monthAndYear: String =
+            creditCardDetailsActivityMainBinding.creditCardExpiryTextView.text.toString()
+        val isExpiryDateValid = creditCardViewModel.validateExpiryMonthAndYear(monthAndYear)
+        expirationDate(isExpiryDateValid)
 
-        lastName()
-        showAlertDialogBox()
+        val creditCardCvv: String =
+            creditCardDetailsActivityMainBinding.creditCardSecurityCodeTextView.text.toString()
+        val isCardCvvValid = creditCardViewModel.validateCreditCardCvv(creditCardCvv)
+        creditCardCvv(isCardCvvValid)
 
+        val firstName =
+            creditCardDetailsActivityMainBinding.creditCardFirstNameTextView.text.toString()
+        val isFirstNameTrueOrFalse = creditCardViewModel.validateFirstName(
+            firstName
+        )
+        firstName(isFirstNameTrueOrFalse)
+
+        val lastName =
+            creditCardDetailsActivityMainBinding.creditCardLastNameTextView.text.toString()
+        val isLastNameTrueOrFalse = creditCardViewModel.validateLastName(
+            lastName
+        )
+        lastName(isLastNameTrueOrFalse)
+
+        if (creditCardViewModel.showAlertDialogBox(
+                isCardValid,
+                isCardCvvValid,
+                isExpiryDateValid,
+                isFirstNameTrueOrFalse,
+                isLastNameTrueOrFalse
+            )
+        ) {
+            showAlertDialogBox()
+        }
     }
 
-    private fun lastName() {
-        val lastName = creditCardViewModel.validateLastName(
-            creditCardDetailsActivityMainBinding.creditCardLastNameTextView.text.toString()
-        )
-        if (lastName.isEmpty()) {
+    private fun lastName(isLastNameCorrect: String) {
+        if (isLastNameCorrect.isEmpty()) {
             creditCardDetailsActivityMainBinding.creditCardLastNameTextInputLayout.error =
                 getString(R.string.enter_last_name)
 
@@ -49,11 +78,8 @@ class CreditCardMainActivity : AppCompatActivity() {
         }
     }
 
-    private fun firstName() {
-        val firstName = creditCardViewModel.validateFirstName(
-            creditCardDetailsActivityMainBinding.creditCardFirstNameTextView.text.toString()
-        )
-        if (firstName.isEmpty()) {
+    private fun firstName(isFirstNameCorrect: String) {
+        if (isFirstNameCorrect.isEmpty()) {
             creditCardDetailsActivityMainBinding.creditCardFirsNameTextInputLayout.error =
                 getString(R.string.enter_first_name)
         } else {
@@ -61,10 +87,8 @@ class CreditCardMainActivity : AppCompatActivity() {
         }
     }
 
-    private fun creditCardCvv() {
-        val creditCardCvv: String =
-            creditCardDetailsActivityMainBinding.creditCardSecurityCodeTextView.text.toString()
-        if (!creditCardViewModel.validateCreditCardCvv(creditCardCvv)) {
+    private fun creditCardCvv(isCardCvvValid: Boolean) {
+        if (!isCardCvvValid) {
             creditCardDetailsActivityMainBinding.creditCardSecurityCodeTextInputLayout.error =
                 getString(R.string.invalid_cvv)
         } else {
@@ -73,10 +97,8 @@ class CreditCardMainActivity : AppCompatActivity() {
         }
     }
 
-    private fun expirationDate() {
-        val monthAndYear: String =
-            creditCardDetailsActivityMainBinding.creditCardExpiryTextView.text.toString()
-        if (!creditCardViewModel.validateExpiryMonthAndYear(monthAndYear)) {
+    private fun expirationDate(isExpirationDateValid: Boolean) {
+        if (!isExpirationDateValid) {
             creditCardDetailsActivityMainBinding.creditCardExpiryTextInputLayout.error =
                 getString(R.string.incorrect_month_year)
         } else {
@@ -85,10 +107,8 @@ class CreditCardMainActivity : AppCompatActivity() {
         }
     }
 
-    private fun creditCardNumber() {
-        val cardNumber: String =
-            creditCardDetailsActivityMainBinding.creditCardNumberTextView.text.toString()
-        if (!creditCardViewModel.validateCardNumber(cardNumber)) {
+    private fun creditCardNumber(isCardValid: Boolean) {
+        if (!isCardValid) {
             creditCardDetailsActivityMainBinding.creditCardTextInputLayout.error =
                 getString(R.string.invalid_card_number)
 
@@ -100,7 +120,7 @@ class CreditCardMainActivity : AppCompatActivity() {
 
     private fun showAlertDialogBox() {
         MaterialAlertDialogBuilder(
-            this,
+            this
         )
             .setTitle(getString(R.string.payment_success))
             .setPositiveButton(
