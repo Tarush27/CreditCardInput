@@ -41,4 +41,19 @@ class CreditCardViewModel : ViewModel() {
     fun validateLastName(lastName: String): String {
         return lastName.trim()
     }
+
+    fun showAlertDialogBox(
+        isCardNoCorrect: Boolean,
+        isCardCvvCorrect: Boolean,
+        isCardExpiryCorrect: Boolean,
+        isFirstNameValid: String,
+        isLastNameValid: String
+    ): Boolean {
+        if (!(isCardNoCorrect && isCardExpiryCorrect && isCardCvvCorrect)) {
+            return false
+        } else if (isFirstNameValid.isNotEmpty() && isLastNameValid.isNotEmpty()) {
+            return true
+        }
+        return false
+    }
 }
