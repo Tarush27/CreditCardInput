@@ -17,3 +17,6 @@ such as If else, all kinds of operators,
 use of functions, I have added suitable comments
 to the code for additional information.
 Also, it supports both light and dark mode.
+![credit-card-gif-white-mode](https://user-images.githubusercontent.com/51998612/160284657-8bf0626d-eccf-444a-a191-38507fe2429f.gif)
+
+![credit-card-gif-dark-mode](https://user-images.githubusercontent.com/51998612/160284666-aa991f43-f6d3-4cf8-a049-7e00b8b1f9e1.gif)
