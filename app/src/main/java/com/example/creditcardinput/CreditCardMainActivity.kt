@@ -41,12 +41,12 @@ class CreditCardMainActivity : AppCompatActivity() {
             function to check the credit card
             details.
              */
-            validateCreditCard(it)
+            validateCreditCardDetailsAndShowALertDialog(it)
         }
     }
 
 
-    private fun validateCreditCard(view: View) {
+    private fun validateCreditCardDetailsAndShowALertDialog(view: View) {
 
         /*
         getting text in card number text view
